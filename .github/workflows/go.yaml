@@ -32,7 +32,7 @@ jobs:
         run: "docker-compose up \
           --build \
           --abort-on-container-exit \
-          --exit-code-from integration"
+          --exit-code-from integration_tests"
 
   linter:
     runs-on: ubuntu-latest
