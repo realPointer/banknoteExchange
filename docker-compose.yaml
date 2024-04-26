@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  banknote_exchange:
+    container_name: banknote_exchange
+    build: .
+    env_file:
+      - .env
+    ports:
+      - ${HTTP_PORT}:${HTTP_PORT}
+    restart: unless-stopped
+
+  integration_tests:
+    container_name: integration_tests
+    build:
+      context: .
+      dockerfile: integration-tests/Dockerfile
+    image: integration
+    depends_on:
+      - banknote_exchange
